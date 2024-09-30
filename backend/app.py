@@ -1,41 +1,20 @@
-from flask import Flask, render_template, request, redirect, make_response, send_file
-from database import db
-from config import Config
-import os
-import json
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+from fastapi.requests import Request
+from pathlib import Path
+import config
 
 
-def create_app():
-    global tokentime
-    app = Flask(__name__,
-                template_folder=os.path.abspath(Config.TEMPLATE_FOLDER),
-                static_folder=os.path.abspath(Config.STATIC_FOLDER))
-    app.config.from_object(Config)
+app = FastAPI()
 
-    db.init_app(app)
+# Set up templates directory
+templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
-    with app.app_context():
-        db.create_all()
-        
-
-    @app.route("/")
-    def default():
-       print("huewhg")
-       context = {}          
-       resp = make_response(render_template("index.html", **context))
-       return resp 
-    @app.route('/manifest.json')
-    def serve_manifest():
-        return send_file('manifest.json', mimetype='application/manifest+json')
-    @app.route('/sw.js')
-    def serve_sw():
-        return send_file('sw.js', mimetype='application/javascript')
-    @app.cli.command("init-db")
-    def init_db():
-        db.create_all()
-
-    return app
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    return templates.TemplateResponse(f"{config.TEMPLATE_FOLDER}", {"request": request, "title": "Hello FastAPI!"})
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8080)
