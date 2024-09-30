@@ -25,6 +25,35 @@
   }
 </script>
 </head>
-<body>
-    <h1>Written with Love, by furries and two normal people.</h1>
+<body class="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div class="relative w-64 h-64">
+    <div id="wheel" class="w-full h-full rounded-full border-8 border-yellow-400 bg-yellow-200 shadow-lg transition-transform duration-5000 ease-out">
+        <div class="absolute w-full h-full text-center" style="transform: rotate(0deg);">
+            <span class="inline-block w-full text-lg font-bold text-gray-800 -rotate-90 mt-6">Art</span>
+        </div>
+        <div class="absolute w-full h-full text-center" style="transform: rotate(90deg);">
+            <span class="inline-block w-full text-lg font-bold text-gray-800 -rotate-90 mt-6">Music</span>
+        </div>
+        <div class="absolute w-full h-full text-center" style="transform: rotate(180deg);">
+            <span class="inline-block w-full text-lg font-bold text-gray-800 -rotate-90 mt-6">Theater</span>
+        </div>
+        <div class="absolute w-full h-full text-center" style="transform: rotate(270deg);">
+            <span class="inline-block w-full text-lg font-bold text-gray-800 -rotate-90 mt-6">Dance</span>
+        </div>
+    </div>
+    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-red-500">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="8 12 12 16 16 12"></polyline>
+            <line x1="12" y1="8" x2="12" y2="16"></line>
+        </svg>
+    </div>
+</div>
+<button id="spinButton" class="mt-8 px-6 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400">
+    Spin the Wheel
+</button>
+<div id="result" class="mt-8 text-center hidden">
+    <h2 class="text-2xl font-bold text-gray-800"></h2>
+    <p class="mt-2 text-lg text-gray-600"></p>
+</div>
 </body>
