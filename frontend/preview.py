@@ -60,7 +60,7 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
 
 def start_server():
     global httpd, observer
-    root_path = os.getcwd()
+    root_path = f"{os.getcwd()}templates/"
     handler = MyHttpRequestHandler
 
     try:

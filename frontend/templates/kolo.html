@@ -1,4 +1,5 @@
-
+<!DOCTYPE html>
+<html lang="cs">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +15,15 @@
     <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
     <link rel="manifest" href="/manifest.json">
 <script>
-  if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/sw.js')
-      .then(function(registration) {
+    .then(function(registration) {
         console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch(function(error) {
+    })
+    .catch(function(error) {
         console.log('Service Worker registration failed:', error);
-      });
-  }
+    });
+}
 </script>
 </head>
 <body class="flex flex-col items-center justify-center h-screen bg-gray-100">
@@ -58,3 +59,4 @@
 </div>
 <script src="kolo.js"></script>
 </body>
+</html>
