@@ -21,6 +21,9 @@ def create_app():
     @app.route("/")
     def default():
        print("huewhg")
+       context = {}          
+       resp = make_response(render_template("index.html", **context))
+       return resp 
     @app.route('/manifest.json')
     def serve_manifest():
         return send_file('manifest.json', mimetype='application/manifest+json')
