@@ -4,23 +4,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>SS</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='main.css')}}">
+    <meta name="theme-color" content="#317EFB"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{url_for('static', filename='icons/icon_144x144.png')}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename='icons/icon_192x192.png')}}" type="image/png">
+    <link rel="icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_144x144.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_192x192.png')}}" type="image/png">
+    <link rel="apple-touch-icon" href="{{url_for('static', filename='icons/icon_512x512.png')}}" type="image/png">
+    <link rel="manifest" href="/manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(registration) {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch(function(error) {
+        console.log('Service Worker registration failed:', error);
+      });
+  }
+</script>
 </head>
-
-
-<div class="grid grid-cols-{{cols}} gap-0 mx-auto border border-4 border-black" style="width: fit-content;">
-    {% for i in map %}
-    <div class="border border-4 border-black w-40 h-40 flex items-center justify-center">{{i}}</div>
-    {% endfor %}
-</div>
-<form action="/move">
-<h1>DEBUG MOVE TOOL</h1>
-<select name = "player" value = "player"> player
-    {% for i in players%}
-    <option value="{{ i }}">{{i}}</option>
-    {% endfor %}
-</select>
-<input value = "coords" type="text" id="coords" name="coords" value="0,0">Coords (napr. 0,0)</input>
-<button class="bg-white/10 border font-bold px-10 py-4 px-1/3 rounded-lg align-bottom hover:bg-white/30 transition">Submit</button>
-
-
-</form>
+<body>
+<h1>Written with Love, by furries.</h1>
+</body>
