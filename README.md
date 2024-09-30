@@ -1,2 +1,2 @@
-We are stupid
+We are stupid /n
 Now go die
